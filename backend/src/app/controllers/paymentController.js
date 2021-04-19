@@ -9,8 +9,12 @@ class PaymentController {
                 shopperName,
                 shopperEmail,
                 installments,
+                browserInfo,
+                shopperIP
             } = req.body.paymentData;
-            const { value, inscricao } = req.body;
+            const { value, inscricao, origin } = req.body;
+
+            console.log('shopper ip', shopperIP)
 
             const reference = uuid();
 
@@ -28,7 +32,14 @@ class PaymentController {
                 shopperReference: inscricao,
                 recurringProcessingModel: 'CardOnFile',
                 shopperInteraction: 'Ecommerce',
-                returnUrl: 'http://localhost:4444/teste',
+                returnUrl: 'http://localhost:3000',
+                browserInfo,
+                origin,
+                shopperIP,
+                additionalData: {
+                    allow3DS2: true
+                },
+                channel: 'Web',
             });
 
             

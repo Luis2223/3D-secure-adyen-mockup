@@ -11,6 +11,7 @@ class MethodsPaymentController {
                     currency: 'BRL',
                     value: 1000
                 },
+                splitCardFundingSources: true,
                 channel: 'Web'
             });
 
